@@ -1,16 +1,32 @@
+import { injectable } from "tsyringe";
+import { Id } from "../../../core/types/Id";
+import { Artist } from "../domain/Artist";
 import { ISongRepository } from "../domain/ISongRepository";
 import { Song } from "../domain/Song";
 
+@injectable()
 export class SqlServerSongRepository implements ISongRepository {
-  create(song: Song): Promise<Song | undefined> {
+  getAll(): Promise<Song[]> {
     throw new Error("Method not implemented.");
   }
-  get(id: string): Promise<Song | undefined>;
-  get(name: string, artistName: string): Promise<Song | undefined>;
-  get(name: unknown, artistName?: unknown): Promise<Song | undefined> {
+  create(song: Song): Promise<Song> {
     throw new Error("Method not implemented.");
   }
-  delete(song: Song): Promise<boolean> {
+  async getById(id: Id): Promise<Song> {
+    let artist: Artist = {
+      id: "1",
+      name: "Cristian Castro",
+      img: "/img",
+    };
+    let song: Song = {
+      id: "1",
+      name: "Azul",
+      artist: artist,
+      lyrics: "ALALALALSLASLALS",
+    };
+    return song;
+  }
+  delete(id: Id): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
 }

@@ -1,16 +1,20 @@
+import { injectable } from "tsyringe";
+import { Id } from "../../../core/types/Id";
 import { ISongRepository } from "../domain/ISongRepository";
 import { Song } from "../domain/Song";
 
+@injectable()
 export class LocalStorageSongRepository implements ISongRepository {
-  create(song: Song): Promise<Song | undefined> {
+  getAll(): Promise<Song[]> {
     throw new Error("Method not implemented.");
   }
-  get(id: string): Promise<Song | undefined>;
-  get(name: string, artistName: string): Promise<Song | undefined>;
-  get(name: unknown, artistName?: unknown): Promise<Song | undefined> {
+  create(song: Song): Promise<Song> {
     throw new Error("Method not implemented.");
   }
-  delete(song: Song): Promise<boolean> {
+  getById(id: Id): Promise<Song> {
+    throw new Error("Method not implemented.");
+  }
+  delete(id: Id): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
 }

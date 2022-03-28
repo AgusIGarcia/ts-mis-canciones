@@ -1,9 +1,9 @@
 import type { Id } from "../../../core/types/Id";
-import { Artist } from "./Artist";
+import { ArtistDto } from "./ArtistDto";
 
-export class Song {
+export class SongDto {
   id?: Id;
   name: string;
-  artist: Artist;
+  artist: ArtistDto;
   lyrics: string;
 }
