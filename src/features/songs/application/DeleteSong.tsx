@@ -11,7 +11,7 @@ export class DeleteSong{
         this._songRepository = songRepository;
     }
 
-    public execute(id:Id){
-        this._songRepository.delete(id);
+    public async execute(id:Id){
+        return await this._songRepository.delete(id);
     }
 }

@@ -20,7 +20,9 @@ export class SaveSong {
     this._mapper = mapper;
   }
 
-  execute(songDto: SongDto) {
-      this._songRepository.create(this._mapper.mapSongDtoToSong(songDto));
+  async execute(songDto: SongDto) {
+    let savedSong = await this._songRepository.create(this._mapper.mapSongDtoToSong(songDto));
+    return this._mapper.mapSongToSongDto(savedSong);
   }
+
 }
