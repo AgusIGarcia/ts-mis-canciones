@@ -8,6 +8,8 @@ import { ListSongs } from "./features/songs/application/ListSongs";
 import { SaveSong } from "./features/songs/application/SaveSong";
 import { ViewSong } from "./features/songs/application/ViewSong";
 import { DeleteSong } from "./features/songs/application/DeleteSong";
+import { useTranslation } from "react-i18next";
+import { i18n } from "./core/i18n/i18n";
 
 
 
@@ -18,6 +20,9 @@ function App() {
   let saveSong = MyContainer.resolve(SaveSong);
   let viewSong = MyContainer.resolve(ViewSong);
   let deleteSong = MyContainer.resolve(DeleteSong);
+
+  const { t } = useTranslation(["global","songs"]);
+
   const getCancion = async () => {
     let resultado = await searchSongs.execute("Avicii","Levels");
     setCancion(resultado);
@@ -30,6 +35,9 @@ function App() {
     getCancion();
   },[]);
   
+  const changeLanguage = (lng:string) => {
+    i18n.changeLanguage(lng);
+  }
 
   return (
     <div className="App">
@@ -44,13 +52,16 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {t("global:title")} yyyyyyy
         </a>
       </header>
+      <h1>{t("songs:title")}</h1>
       <p>{cancion?.artist.name}</p>
       <p>{cancion?.artist.img}</p>
       <p>{cancion?.name}</p>
       <p>{cancion?.lyrics}</p>
+      <button onClick={()=>changeLanguage("en")}>Swap</button>
+      <button onClick={()=>changeLanguage("es")}>Cambiar</button>
     </div>
   );
 }

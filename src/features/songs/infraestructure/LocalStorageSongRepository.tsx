@@ -1,4 +1,3 @@
-import { json } from "node:stream/consumers";
 import { injectable } from "tsyringe";
 import { Id } from "../../../core/types/Id";
 import { ISongRepository } from "../domain/ISongRepository";
@@ -36,7 +35,7 @@ export class LocalStorageSongRepository implements ISongRepository {
       newList:Song[] = [],
       deletedSong = false;
     songsList.forEach((s) => {
-      if (s.id != id) newList.push(s);
+      if (s.id !== id) newList.push(s);
       else deletedSong = true;
     });
     localStorage.setItem(this._localStorageKey, JSON.stringify(newList));
