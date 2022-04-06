@@ -6,6 +6,9 @@ import { Song } from "../domain/Song";
 
 @injectable()
 export class SqlServerSongRepository implements ISongRepository {
+  getByArtistNameAndSongName(artistName: string, songName: string): Promise<Song> {
+    throw new Error("Method not implemented.");
+  }
   getAll(): Promise<Song[]> {
     throw new Error("Method not implemented.");
   }

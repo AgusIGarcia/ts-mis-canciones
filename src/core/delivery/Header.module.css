@@ -1,0 +1,48 @@
+.AppHeader {
+    min-height: 8vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 2vh;
+    padding-top: 1vh;
+    background-color: blue;
+  }
+  
+  .AppLogo {
+    max-width: 5vw;
+    max-height: 10vh;
+    pointer-events: none;
+  
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+      animation: AppLogoSpin infinite 20s linear;
+    }
+  }
+  
+  @keyframes AppLogoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .AppHeader > div {
+    display: flex;
+    align-items: center;
+    height: 8vh;
+  }
+  
+  .DivTitle {
+    color:black;
+    justify-content: center;
+    font-size: 3vw;
+  }
+  
+  .DivLanguageSelector {
+    align-items: center;
+    justify-content: right;
+  }

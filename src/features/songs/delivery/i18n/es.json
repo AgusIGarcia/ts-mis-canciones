@@ -1,3 +1,18 @@
 {
-    "title": "Bienvenido a Mis Canciones"
+    "title": "Bienvenido a Mis Canciones",
+    "artist": "Artista",
+    "songName": "Canción",
+    "artistNoEmptyMessage": "El nombre del artista es requerido",
+    "songNoEmptyMessage": "El nombre de la canción es requerida",
+    "songErrorTitle": "Uups!",
+    "songErrorSubtitle": "No se encontraron resultados",
+    "songErrorText0": "El artista",
+    "songErrorText1": "y/o la canción",
+    "songErrorText2": "no se encontraron en nuestros sistemas.",
+    "songErrorText3": "Intenta nuevamente con otros valores.",
+    "addSongButton": "Agregar",
+    "songSavedSuccessfully": "¡Guardado Exitoso!",
+    "saveSongErrorDefault": "Hubo un problema al guardar",
+    "saveSongError0": "Esta canción ya ha sido guardada previamente"
+
 }

@@ -1,3 +1,18 @@
 {
-    "title": "Welcome to My Songs"
+    "title": "Welcome to My Songs",
+    "artist": "Artist",
+    "songName": "Song",
+    "artistNoEmptyMessage": "Artist is requiered",
+    "songNoEmptyMessage": "Song is requiered",
+    "songErrorTitle": "Oops!",
+    "songErrorSubtitle": "No results found",
+    "songErrorText0": "The artist",
+    "songErrorText1": "and/or the song",
+    "songErrorText2": "were not found in our systems.",
+    "songErrorText3": "Try again with other values.",
+    "addSongButton": "Add",
+    "songSavedSuccessfully": "Successfully save!",
+    "saveSongErrorDefault": "There was a problem saving",
+    "saveSongError0": "This song has been previously saved"
+    
 }

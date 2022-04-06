@@ -1,0 +1,36 @@
+.Card{
+    width: 80vw;
+    margin: 2vw;
+}
+
+.CardImg{
+    min-height: 40vh;
+    display: flex;
+    background-size: cover !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.Title{
+    margin-bottom: 1vw;
+    font-size: 4rem;
+}
+
+.Lyrics{
+    white-space: pre-wrap;
+    font-size: 1.5rem;
+}
+
+.CardActions{
+    margin-top: 1vw;
+    justify-content: end;
+    align-items: center !important;
+}
+
+.AddButton{
+    font-size: 1.5rem !important;
+}
+
+.AddButtonIcon{
+    font-size: 1.5rem !important;
+}

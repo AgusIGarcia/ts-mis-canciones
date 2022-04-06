@@ -1,0 +1,12 @@
+.MainDiv{
+    min-height: 81vh;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+}
+
+.LoaderDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

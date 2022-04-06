@@ -7,6 +7,8 @@ import type { ISongRepository } from "../domain/ISongRepository";
 import { Mapper } from "../dtos/Mapper";
 import { SongDto } from "../dtos/SongDto";
 
+export const saveSongErrorKeys = ["DuplicatedSong"];
+
 @injectable()
 export class SaveSong {
   private readonly _songRepository: ISongRepository;
@@ -21,8 +23,15 @@ export class SaveSong {
   }
 
   async execute(songDto: SongDto) {
-    let savedSong = await this._songRepository.create(this._mapper.mapSongDtoToSong(songDto));
+    await this.songValidation(songDto);
+    let savedSong = await this._songRepository.create(
+      this._mapper.mapSongDtoToSong(songDto)
+    );
     return this._mapper.mapSongToSongDto(savedSong);
   }
 
+  private async songValidation(songDto: SongDto) {
+    let song = await this._songRepository.getByArtistNameAndSongName(songDto.artist.name,songDto.name);
+    if(song !== undefined) throw Error(saveSongErrorKeys[0]);
+  }
 }

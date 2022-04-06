@@ -32,7 +32,7 @@ export class LocalStorageSongRepository implements ISongRepository {
 
   async delete(id: Id): Promise<boolean> {
     let songsList = await this.getAll(),
-      newList:Song[] = [],
+      newList: Song[] = [],
       deletedSong = false;
     songsList.forEach((s) => {
       if (s.id !== id) newList.push(s);
@@ -40,6 +40,17 @@ export class LocalStorageSongRepository implements ISongRepository {
     });
     localStorage.setItem(this._localStorageKey, JSON.stringify(newList));
     return deletedSong;
+  }
+  
+  async getByArtistNameAndSongName(
+    artistName: string,
+    songName: string
+  ): Promise<Song> {
+    let songsList = await this.getAll(),
+      filteredSongs = songsList.filter(
+        (s) => s.artist.name === artistName && s.name === songName
+      );
+    return filteredSongs[0];
   }
 
   private async autoGenerateId(): Promise<Id> {

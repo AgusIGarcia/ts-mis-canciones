@@ -1,0 +1,15 @@
+.Alert{
+    width: 80vw;
+    align-self: start;
+    margin: 2vw;
+    justify-content: center;
+}
+
+.AlertTitle{
+    font-size: xx-large !important;
+    font-weight: bolder !important;
+}
+
+.Subtitle{
+    margin-bottom: 0.25vw;
+}

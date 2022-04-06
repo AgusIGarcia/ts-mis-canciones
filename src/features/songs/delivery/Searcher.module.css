@@ -1,0 +1,25 @@
+.TextField{
+    width: 15rem;
+    margin: 0.5rem !important;
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+
+.Form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh;
+  background-color: aqua;
+}
+
+.ImageButton{
+  margin: 0.5rem !important;
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.Icon{
+  font-size: xx-large !important;
+}
+

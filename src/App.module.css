@@ -1,0 +1,17 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  color:black;
+  font-family: "Roboto";
+}
+
+.DivPrincipal {
+  background-color: red;
+  min-height: 89vh;
+}
+
