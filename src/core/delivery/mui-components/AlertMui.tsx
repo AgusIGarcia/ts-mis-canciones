@@ -4,7 +4,7 @@ interface Props {
   className?: string;
   titleClassName?: string;
   severity?: AlertColor;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
 }
 

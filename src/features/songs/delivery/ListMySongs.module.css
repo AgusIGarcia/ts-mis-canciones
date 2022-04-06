@@ -1,0 +1,32 @@
+.PrincipalDiv{
+    margin: 0.75vw;
+    width: 80vw;
+}
+
+.Alert{
+    justify-content: center;
+}
+
+.AlertTitle{
+    font-size: x-large !important;
+    font-weight: bolder !important;
+    margin: 0px !important;
+}
+
+.Item{
+    margin-bottom: 0.5rem !important;
+}
+
+.Text > *{
+    font-size: 1.25rem !important;
+}
+
+.Image {
+    height: 4rem !important;
+    width: 4rem !important;
+    margin-right: 1rem !important;
+}
+
+.Icon{
+    font-size: x-large !important;
+}

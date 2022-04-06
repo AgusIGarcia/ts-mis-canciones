@@ -16,6 +16,7 @@ interface Props {
   type?: "button" | "submit" | "reset" | undefined;
   icon: string;
   iconClassName?: string;
+  onClick?: React.MouseEventHandler;
 }
 
 const IconButtonMui = (props: Props) => {
@@ -24,6 +25,7 @@ const IconButtonMui = (props: Props) => {
       color={props.color}
       className={props.className}
       type={props.type}
+      onClick={props.onClick}
     >
       <IconManagerMui icon={props.icon} className={props.iconClassName} />
     </IconButton>

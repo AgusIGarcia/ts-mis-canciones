@@ -1,6 +1,8 @@
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import LaunchIcon from "@mui/icons-material/Launch";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 interface Props {
   className?: string;
@@ -15,6 +17,10 @@ const IconManagerMui = (props: Props) => {
       return <SearchIcon className={props.className} />;
     case "addCircle":
       return <AddCircleIcon className={props.className} />;
+    case "launch":
+      return <LaunchIcon className={props.className} />;
+    case "delete":
+      return <DeleteIcon className={props.className} />;
     default:
       return null;
   }

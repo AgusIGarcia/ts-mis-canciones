@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoaderMui from "../core/delivery/mui-components/LoaderMui";
+import ListMySongs from "../features/songs/delivery/ListMySongs";
 import Searcher from "../features/songs/delivery/Searcher";
 import SearchError from "../features/songs/delivery/SearchError";
 import Song from "../features/songs/delivery/Song";
@@ -15,6 +16,7 @@ const defaultArtist: ArtistDto = {
 };
 
 const defaultSong: SongDto = {
+  id:"0",
   name: "",
   artist: defaultArtist,
   lyrics: "",
@@ -23,17 +25,17 @@ const defaultSong: SongDto = {
 const Home = () => {
   const [searchedSong, setSearchedSong] = useState(defaultSong);
   const [error, setError] = useState(false);
-  const [searching, setSearching] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 const getElementToShow = () => {
-    if(searching) return <LoaderMui className={styles.LoaderDiv} size={LOADER_SIZE}/>
+    if(loading) return <LoaderMui className={styles.LoaderDiv} size={LOADER_SIZE}/>
     if(searchedSong.lyrics!=="") return  <Song song={searchedSong}/>
     if(error) return  <SearchError artistName={searchedSong.artist.name} songName={searchedSong.name} />
-    return <p>Lista Canciones</p>
+    return <ListMySongs />
 }
   return (
     <div>
-      <Searcher setSearchedSong={setSearchedSong} setError={setError} setSearching={setSearching} />
+      <Searcher setSearchedSong={setSearchedSong} setError={setError} setSearching={setLoading} />
       <div className={styles.MainDiv}>{getElementToShow()}</div>
     </div>
   );

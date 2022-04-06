@@ -30,6 +30,7 @@ export class SearchSong {
       lyrics = await this._lyricsAPI.get(artistName, songName),
       artistDto = this._mapper.mapArtistToArtistDto(artist),
       songDto: SongDto = {
+        id: "0",
         name: songName,
         artist: artistDto,
         lyrics: lyrics,

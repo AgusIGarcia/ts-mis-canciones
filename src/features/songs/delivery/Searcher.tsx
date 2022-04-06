@@ -21,6 +21,7 @@ const defaultArtist: ArtistDto = {
 };
 
 const defaultSong: SongDto = {
+  id:"0",
   name: "",
   artist: defaultArtist,
   lyrics: "",
@@ -39,6 +40,15 @@ const Searcher = (props: Props) => {
     setSong({ ...song, name: songName });
   };
 
+  const beforeSearch = () => {
+    props.setSearching(true);
+    props.setError(false);
+    props.setSearchedSong(defaultSong);
+    let songPret = songPrettier();
+    props.setSearchedSong(songPret);
+    return songPret;
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     let songPret = beforeSearch();
@@ -51,15 +61,6 @@ const Searcher = (props: Props) => {
     } finally {
       props.setSearching(false);
     }
-  };
-
-  const beforeSearch = () => {
-    props.setSearching(true);
-    props.setError(false);
-    props.setSearchedSong(defaultSong);
-    let songPret = songPrettier();
-    props.setSearchedSong(songPret);
-    return songPret;
   };
 
   const handleReset = (event: React.FormEvent) => {

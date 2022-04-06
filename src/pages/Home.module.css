@@ -1,6 +1,6 @@
 .MainDiv{
     min-height: 81vh;
-    background-color: blue;
+    background-color: darksalmon;
     display: flex;
     justify-content: center;
 }

@@ -22,7 +22,7 @@ interface Props {
 const IconTextButtonMui = (props: Props) => {
   return (
     <Button className={props.className} color="primary" onClick={props.onClick}>
-      <IconManagerMui icon={props.icon} className={props.iconClassName}/>
+      <IconManagerMui icon={props.icon} className={props.iconClassName} />
       {props.buttonText}
     </Button>
   );

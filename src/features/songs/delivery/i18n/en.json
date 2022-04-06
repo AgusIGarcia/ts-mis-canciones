@@ -13,6 +13,7 @@
     "addSongButton": "Add",
     "songSavedSuccessfully": "Successfully save!",
     "saveSongErrorDefault": "There was a problem saving",
-    "saveSongError0": "This song has been previously saved"
+    "saveSongError0": "This song has been previously saved",
+    "noSongsMessage": "You have no saved songs"
     
 }
