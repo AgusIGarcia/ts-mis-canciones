@@ -9,6 +9,7 @@ import { ViewSong } from "./features/songs/application/ViewSong";
 import { DeleteSong } from "./features/songs/application/DeleteSong";
 import Header from "./core/delivery/Header";
 import Home from "./pages/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [cancion, setCancion] = useState<SongDto>();
@@ -34,7 +35,11 @@ function App() {
     <div className={styles.App}>
       <Header />
       <div className={styles.DivPrincipal}>
-        <Home />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
       </div>
     </div>
   );

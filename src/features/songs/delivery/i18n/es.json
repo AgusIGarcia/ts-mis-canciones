@@ -14,7 +14,7 @@
     "songSavedSuccessfully": "¡Guardado Exitoso!",
     "saveSongErrorDefault": "Hubo un problema al guardar",
     "saveSongError0": "Esta canción ya ha sido guardada previamente",
-    "noSongsMessage": "No tienes canciones guardadas"
-
+    "noSongsMessage": "No tienes canciones guardadas",
+    "home": "Home"
 
 }

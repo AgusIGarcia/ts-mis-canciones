@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoaderMui from "../core/delivery/mui-components/LoaderMui";
 import ListMySongs from "../features/songs/delivery/ListMySongs";
 import Searcher from "../features/songs/delivery/Searcher";
@@ -29,12 +30,15 @@ const Home = () => {
 
 const getElementToShow = () => {
     if(loading) return <LoaderMui className={styles.LoaderDiv} size={LOADER_SIZE}/>
-    if(searchedSong.lyrics!=="") return  <Song song={searchedSong}/>
+    if(searchedSong.lyrics!=="") return  <Song song={searchedSong} searchedSong={true}/>
     if(error) return  <SearchError artistName={searchedSong.artist.name} songName={searchedSong.name} />
     return <ListMySongs />
 }
   return (
     <div>
+      <Router>
+          <Routes></Routes>
+      </Router>
       <Searcher setSearchedSong={setSearchedSong} setError={setError} setSearching={setLoading} />
       <div className={styles.MainDiv}>{getElementToShow()}</div>
     </div>

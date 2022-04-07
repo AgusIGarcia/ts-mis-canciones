@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import CardMui from "../../../core/delivery/mui-components/CardMui";
 import IconTextButtonMui from "../../../core/delivery/mui-components/IconTextButtonMui";
 import LoaderMui from "../../../core/delivery/mui-components/LoaderMui";
@@ -11,11 +12,13 @@ import styles from "./Song.module.css";
 
 interface Props {
   song: SongDto;
+  searchedSong: boolean;
 }
 
 const LOADER_SIZE = "10vw";
 
 const Song = (props: Props) => {
+  let navigate = useNavigate();
   let saveSong = MyContainer.resolve(SaveSong);
   const { t } = useTranslation(["songs"]);
   const [successfulSaveNotification, setSuccessfulSaveNotification] =
@@ -32,6 +35,10 @@ const Song = (props: Props) => {
         return t("songs:saveSongErrorDefault");
     }
   };
+
+  const homeButtonHandler = () => {
+    navigate("/",);
+  }
 
   const saveButtonHandler = async () => {
     try {
@@ -65,7 +72,7 @@ const Song = (props: Props) => {
       </>
     );
   };
-  
+
   return (
     <>
       <CardMui
@@ -82,13 +89,24 @@ const Song = (props: Props) => {
           <p className={styles.Lyrics}>{props.song.lyrics}</p>
         </div>
         <div id="Actions">
-          <IconTextButtonMui
-            className={styles.AddButton}
-            icon="addCircle"
-            buttonText={t("songs:addSongButton")}
-            iconClassName={styles.AddButtonIcon}
-            onClick={saveButtonHandler}
-          />
+          <div className={styles.ButtonContainer}>
+            <IconTextButtonMui
+              className={styles.HomeButton}
+              icon="home"
+              buttonText={t("songs:home")}
+              iconClassName={styles.ButtonIcon}
+              onClick={homeButtonHandler}
+            />
+            {props.searchedSong ? (
+              <IconTextButtonMui
+                className={styles.AddButton}
+                icon="addCircle"
+                buttonText={t("songs:addSongButton")}
+                iconClassName={styles.ButtonIcon}
+                onClick={saveButtonHandler}
+              />
+            ) : null}
+          </div>
         </div>
       </CardMui>
       {snackbars()}
