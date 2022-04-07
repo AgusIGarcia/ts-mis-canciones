@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoaderMui from "../core/delivery/mui-components/LoaderMui";
 import ListMySongs from "../features/songs/delivery/ListMySongs";
 import Searcher from "../features/songs/delivery/Searcher";
@@ -36,9 +35,6 @@ const getElementToShow = () => {
 }
   return (
     <div>
-      <Router>
-          <Routes></Routes>
-      </Router>
       <Searcher setSearchedSong={setSearchedSong} setError={setError} setSearching={setLoading} />
       <div className={styles.MainDiv}>{getElementToShow()}</div>
     </div>

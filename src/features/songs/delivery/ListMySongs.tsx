@@ -7,12 +7,28 @@ import ListMui from "../../../core/delivery/mui-components/ListMui";
 import { MyContainer } from "../../../core/dependency-injection/Container";
 import { Id } from "../../../core/types/Id";
 import { ListSongs } from "../application/ListSongs";
+import { ArtistDto } from "../dtos/ArtistDto";
 import { SongDto } from "../dtos/SongDto";
 import styles from "./ListMySongs.module.css";
+
+const defaultArtist: ArtistDto = {
+  name: "",
+  img: "",
+};
+
+const defaultSong: SongDto = {
+  id:"0",
+  name: "",
+  artist: defaultArtist,
+  lyrics: "",
+};
+
 
 const ListMySongs = () => {
   let listSongsCU = MyContainer.resolve(ListSongs);
   const [songs, setSongs] = useState<SongDto[]>([]);
+  const [openSong, setOpenSong] = useState(defaultSong);
+
   const { t } = useTranslation(["songs"]);
 
   const getSongs = async () => {

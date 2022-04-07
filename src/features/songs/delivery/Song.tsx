@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import CardMui from "../../../core/delivery/mui-components/CardMui";
 import IconTextButtonMui from "../../../core/delivery/mui-components/IconTextButtonMui";
 import LoaderMui from "../../../core/delivery/mui-components/LoaderMui";
@@ -18,7 +17,6 @@ interface Props {
 const LOADER_SIZE = "10vw";
 
 const Song = (props: Props) => {
-  let navigate = useNavigate();
   let saveSong = MyContainer.resolve(SaveSong);
   const { t } = useTranslation(["songs"]);
   const [successfulSaveNotification, setSuccessfulSaveNotification] =
@@ -37,7 +35,6 @@ const Song = (props: Props) => {
   };
 
   const homeButtonHandler = () => {
-    navigate("/",);
   }
 
   const saveButtonHandler = async () => {
