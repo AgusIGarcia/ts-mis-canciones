@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import CardMui from "../../../core/delivery/mui-components/CardMui";
 import IconTextButtonMui from "../../../core/delivery/mui-components/IconTextButtonMui";
 import LoaderMui from "../../../core/delivery/mui-components/LoaderMui";
@@ -18,7 +19,8 @@ const LOADER_SIZE = "10vw";
 
 const Song = (props: Props) => {
   let saveSong = MyContainer.resolve(SaveSong);
-  const { t } = useTranslation(["songs"]);
+  const { t } = useTranslation(["songs", "global"]);
+  let navigate = useNavigate();
   const [successfulSaveNotification, setSuccessfulSaveNotification] =
     useState(false);
   const [failSaveNotification, setFailSaveNotification] = useState(false);
@@ -35,6 +37,7 @@ const Song = (props: Props) => {
   };
 
   const homeButtonHandler = () => {
+    navigate("/");
   }
 
   const saveButtonHandler = async () => {
@@ -90,7 +93,7 @@ const Song = (props: Props) => {
             <IconTextButtonMui
               className={styles.HomeButton}
               icon="home"
-              buttonText={t("songs:home")}
+              buttonText={t("global:home")}
               iconClassName={styles.ButtonIcon}
               onClick={homeButtonHandler}
             />
@@ -98,7 +101,7 @@ const Song = (props: Props) => {
               <IconTextButtonMui
                 className={styles.AddButton}
                 icon="addCircle"
-                buttonText={t("songs:addSongButton")}
+                buttonText={t("global:add")}
                 iconClassName={styles.ButtonIcon}
                 onClick={saveButtonHandler}
               />

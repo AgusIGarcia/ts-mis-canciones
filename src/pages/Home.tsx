@@ -1,42 +1,42 @@
 import { useState } from "react";
-import LoaderMui from "../core/delivery/mui-components/LoaderMui";
+import { Route, Routes, Navigate } from "react-router-dom";
+import DeleteSong from "../features/songs/delivery/DeleteSongComponent";
 import ListMySongs from "../features/songs/delivery/ListMySongs";
 import Searcher from "../features/songs/delivery/Searcher";
-import SearchError from "../features/songs/delivery/SearchError";
-import Song from "../features/songs/delivery/Song";
-import { ArtistDto } from "../features/songs/dtos/ArtistDto";
-import { SongDto } from "../features/songs/dtos/SongDto";
+import { defaultSong } from "../features/songs/dtos/default/DefaultSong";
 import styles from "./Home.module.css";
-
-const LOADER_SIZE = "20vw";
-
-const defaultArtist: ArtistDto = {
-  name: "",
-  img: "",
-};
-
-const defaultSong: SongDto = {
-  id:"0",
-  name: "",
-  artist: defaultArtist,
-  lyrics: "",
-};
+import SearchSongPage from "./SearchSongPage";
 
 const Home = () => {
-  const [searchedSong, setSearchedSong] = useState(defaultSong);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [songToDelete, setSongToDelete] = useState(defaultSong);
+  const [thereIsSongToDelete, setThereIsSongToDelete] =
+    useState<boolean>(false);
 
-const getElementToShow = () => {
-    if(loading) return <LoaderMui className={styles.LoaderDiv} size={LOADER_SIZE}/>
-    if(searchedSong.lyrics!=="") return  <Song song={searchedSong} searchedSong={true}/>
-    if(error) return  <SearchError artistName={searchedSong.artist.name} songName={searchedSong.name} />
-    return <ListMySongs />
-}
   return (
     <div>
-      <Searcher setSearchedSong={setSearchedSong} setError={setError} setSearching={setLoading} />
-      <div className={styles.MainDiv}>{getElementToShow()}</div>
+      <Searcher />
+      <div className={styles.MainDiv}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <ListMySongs
+                  setSongToDelete={setSongToDelete}
+                  setThereIsSongToDelete={setThereIsSongToDelete}
+                />
+                <DeleteSong
+                  open={thereIsSongToDelete}
+                  setOpen={setThereIsSongToDelete}
+                  song={songToDelete}
+                />
+              </>
+            }
+          />
+          <Route path="/search" element={<SearchSongPage />} />
+          <Route path="*" element={<Navigate to={"/404"} />} />
+        </Routes>
+      </div>
     </div>
   );
 };

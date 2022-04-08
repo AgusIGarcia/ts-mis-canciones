@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ArtistDto } from "../dtos/ArtistDto";
 import { SongDto } from "../dtos/SongDto";
 import TextFieldMui from "../../../core/delivery/mui-components/TextFieldMui";
 import styles from "./Searcher.module.css";
@@ -8,29 +7,13 @@ import IconButtonMui from "../../../core/delivery/mui-components/IconButtonMui";
 import FormDefault from "../../../core/delivery/default-components/FormDefault";
 import { MyContainer } from "../../../core/dependency-injection/Container";
 import { SearchSong } from "../application/SearchSong";
+import { defaultSong } from "../dtos/default/DefaultSong";
+import { useNavigate } from "react-router-dom";
 
-interface Props {
-  setSearchedSong: React.Dispatch<React.SetStateAction<SongDto>>;
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
-  setSearching: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const defaultArtist: ArtistDto = {
-  name: "",
-  img: "",
-};
-
-const defaultSong: SongDto = {
-  id:"0",
-  name: "",
-  artist: defaultArtist,
-  lyrics: "",
-};
-
-const Searcher = (props: Props) => {
+const Searcher = () => {
   const { t } = useTranslation(["songs"]);
   const [song, setSong] = useState(defaultSong);
-  let searchSongs = MyContainer.resolve(SearchSong);
+  let navigate = useNavigate();
 
   const changeArtistHandler = (artistName: string) => {
     setSong({ ...song, artist: { ...song.artist, name: artistName } });
@@ -40,33 +23,17 @@ const Searcher = (props: Props) => {
     setSong({ ...song, name: songName });
   };
 
-  const beforeSearch = () => {
-    props.setSearching(true);
-    props.setError(false);
-    props.setSearchedSong(defaultSong);
-    let songPret = songPrettier();
-    props.setSearchedSong(songPret);
-    return songPret;
-  };
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    let songPret = beforeSearch();
-    try {
-      props.setSearchedSong(
-        await searchSongs.execute(songPret.artist.name, songPret.name)
-      );
-    } catch (error) {
-      props.setError(true);
-    } finally {
-      props.setSearching(false);
-    }
+    let songToSearch = songPrettier();
+    navigate(
+      `/search?artist=${songToSearch.artist.name}&song=${songToSearch.name}`
+    );
   };
 
   const handleReset = (event: React.FormEvent) => {
     setSong(defaultSong);
-    props.setSearchedSong(defaultSong);
-    props.setError(false);
+    navigate("/");
   };
 
   const songPrettier = () => {

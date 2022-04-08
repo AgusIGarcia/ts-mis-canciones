@@ -8,13 +8,13 @@ interface Props {
 }
 
 const SearchError = (props:Props) => {
-  const { t } = useTranslation(["songs"]);
+  const { t } = useTranslation(["songs","global"]);
   return (
     <AlertMui
       className={styles.Alert}
       titleClassName={styles.AlertTitle}
       severity="error"
-      title={t("songs:songErrorTitle")}
+      title={t("global:ErrorTitle")}
     >
       <h2 className={styles.Subtitle}>{t("songs:songErrorSubtitle")}</h2>
       <p>{t("songs:songErrorText0")} <b>{props.artistName}</b> {t("songs:songErrorText1")} <b>{props.songName}</b> {t("songs:songErrorText2")}</p>

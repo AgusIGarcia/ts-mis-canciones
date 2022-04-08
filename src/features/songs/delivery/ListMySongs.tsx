@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import AlertMui from "../../../core/delivery/mui-components/AlertMui";
 import IconButtonMui from "../../../core/delivery/mui-components/IconButtonMui";
 import ListItemWithAvatarMui from "../../../core/delivery/mui-components/ListItemWithAvatarMui";
@@ -7,28 +8,18 @@ import ListMui from "../../../core/delivery/mui-components/ListMui";
 import { MyContainer } from "../../../core/dependency-injection/Container";
 import { Id } from "../../../core/types/Id";
 import { ListSongs } from "../application/ListSongs";
-import { ArtistDto } from "../dtos/ArtistDto";
 import { SongDto } from "../dtos/SongDto";
 import styles from "./ListMySongs.module.css";
 
-const defaultArtist: ArtistDto = {
-  name: "",
-  img: "",
-};
+interface Props{
+  setSongToDelete:React.Dispatch<React.SetStateAction<SongDto>>;
+  setThereIsSongToDelete: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const defaultSong: SongDto = {
-  id:"0",
-  name: "",
-  artist: defaultArtist,
-  lyrics: "",
-};
-
-
-const ListMySongs = () => {
+const ListMySongs = (props:Props) => {
   let listSongsCU = MyContainer.resolve(ListSongs);
+  let navigate = useNavigate();
   const [songs, setSongs] = useState<SongDto[]>([]);
-  const [openSong, setOpenSong] = useState(defaultSong);
-
   const { t } = useTranslation(["songs"]);
 
   const getSongs = async () => {
@@ -39,14 +30,13 @@ const ListMySongs = () => {
     getSongs();
   }, []);
 
-  const handleOpenSong = (index:number) => {
-    let song = songs[index];
-    console.log(index)
+  const handleOpenSong = (songId:Id) => {
+    navigate(`/songs/${songId}`);
   }
 
-  const handleDeleteSong = (index:number) => {
-    let song = songs[index];
-    console.log("Estás por borrar la canción" + song.name);
+  const handleDeleteSong = (song:SongDto) => {
+    props.setSongToDelete(song);
+    props.setThereIsSongToDelete(true);
   }
 
   const createItems = () => {
@@ -62,9 +52,9 @@ const ListMySongs = () => {
           textClassName={styles.Text}
           imgClassName={styles.Image}
         >
-            <IconButtonMui icon="launch" iconClassName={styles.Icon} onClick={() => handleOpenSong(index)}/>
+            <IconButtonMui icon="launch" iconClassName={styles.Icon} onClick={() => handleOpenSong(s.id)}/>
             <div id="Separator"></div>
-            <IconButtonMui icon="delete" iconClassName={styles.Icon} onClick={() => handleDeleteSong(index)}/>
+            <IconButtonMui icon="delete" iconClassName={styles.Icon} onClick={() => handleDeleteSong(s)}/>
         </ListItemWithAvatarMui>
       );
     });

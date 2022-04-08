@@ -22,6 +22,6 @@ export class ViewSong {
 
   public async execute(id: Id) {
     let song = await this._songRepository.getById(id);
-    return this._mapper.mapSongToSongDto(song);
+    return song !== undefined ? this._mapper.mapSongToSongDto(song) : undefined;
   }
 }

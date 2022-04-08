@@ -1,3 +1,11 @@
 {
-    "title": "My Songs"
+    "title": "My Songs",
+    "yes": "Yes",
+    "no": "No",
+    "add": "Add",
+    "delete": "Delete",
+    "home": "Home",
+    "ErrorTitle": "Oops!",
+    "404ErrorSubtitle": "Not found",
+    "404ErrorText0": "The resource was not found"
 }

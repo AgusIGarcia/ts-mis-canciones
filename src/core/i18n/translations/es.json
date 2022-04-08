@@ -1,3 +1,11 @@
 {
-    "title": "Mis Canciones"
+    "title": "Mis Canciones",
+    "yes": "Si",
+    "no": "No",
+    "add": "Agregar",
+    "delete": "Eliminar",
+    "home": "Home",
+    "ErrorTitle": "Uups!",
+    "404ErrorSubtitle": "No encontrada",
+    "404ErrorText0": "El recurso no fue encontrado"
 }

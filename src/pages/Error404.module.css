@@ -1,0 +1,30 @@
+.Alert{
+    width: 80vw;
+    align-self: start;
+    margin: 1vw;
+    justify-content: center;
+}
+
+.AlertTitle{
+    font-size: xx-large !important;
+    font-weight: bolder !important;
+}
+
+.Subtitle{
+    margin-bottom: 0.25vw;
+}
+
+.ButtonContainer{
+    align-self: flex-end;
+    margin: 1vw;
+}
+
+.HomeButton{
+    font-size: 1.5rem !important;
+}
+
+.MainDiv{
+    min-height: 89vh;
+    display: grid;
+    justify-content: center;
+}

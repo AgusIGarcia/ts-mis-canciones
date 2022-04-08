@@ -5,6 +5,9 @@
 
 .CardImg{
     min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Title{
